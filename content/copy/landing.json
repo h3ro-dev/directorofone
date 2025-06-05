@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "badge": "Welcome to Director of One",
+    "title": "Master Your One-Person Department",
+    "subtitle": "The intelligent platform that transforms solo operators into efficiency powerhouses",
+    "description": "Streamline workflows, automate repetitive tasks, and amplify your impact with AI-powered tools designed specifically for one-person teams.",
+    "primaryAction": {
+      "label": "Get Started Free",
+      "href": "/signup"
+    },
+    "secondaryAction": {
+      "label": "Watch Demo",
+      "href": "/demo"
+    }
+  },
+  "features": {
+    "title": "Everything You Need to Excel Solo",
+    "subtitle": "Powerful Features",
+    "description": "Built by solo operators, for solo operators. Every feature is designed to multiply your productivity without adding complexity.",
+    "items": [
+      {
+        "title": "AI Task Automation",
+        "description": "Let intelligent agents handle repetitive tasks while you focus on strategic work that matters."
+      },
+      {
+        "title": "Smart Workflow Builder",
+        "description": "Create custom workflows that adapt to your unique processes and evolve with your needs."
+      },
+      {
+        "title": "Unified Dashboard",
+        "description": "See everything at a glance. Track progress, deadlines, and priorities in one intelligent view."
+      },
+      {
+        "title": "Context-Aware Assistant",
+        "description": "Get intelligent suggestions and insights based on your work patterns and goals."
+      },
+      {
+        "title": "Seamless Integrations",
+        "description": "Connect all your tools and data sources. Work where you want, how you want."
+      },
+      {
+        "title": "Performance Analytics",
+        "description": "Understand your productivity patterns and optimize your workflows with data-driven insights."
+      }
+    ]
+  },
+  "benefits": {
+    "title": "Why Director of One?",
+    "items": [
+      {
+        "title": "Save 10+ Hours Per Week",
+        "description": "Automate routine tasks and reclaim your time for high-impact work."
+      },
+      {
+        "title": "Zero Learning Curve",
+        "description": "Intuitive design that works the way you think. Get productive from day one."
+      },
+      {
+        "title": "Scale Your Impact",
+        "description": "Handle the workload of a small team while maintaining quality and sanity."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Transform Your Solo Operation?",
+    "description": "Join thousands of one-person departments who've revolutionized their productivity.",
+    "primaryAction": {
+      "label": "Start Free Trial",
+      "href": "/signup"
+    },
+    "note": "No credit card required • 14-day free trial • Cancel anytime"
+  }
+}

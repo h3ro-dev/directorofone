@@ -1,26 +1,29 @@
 {
-  "name": "directorofone-api",
+  "name": "directorofone-backend",
   "version": "1.0.0",
-  "description": "Zero-dependency API server for DirectorOfOne",
-  "main": "src/server.js",
+  "description": "Director of One API - Backend for one-person department automation",
+  "main": "dist/api/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "NODE_ENV=development node src/server.js",
-    "prod": "NODE_ENV=production node src/server.js",
-    "test": "echo \"No tests configured yet\"",
-    "health": "curl -s http://localhost:3000/health | jq"
+    "dev": "nodemon --exec ts-node src/api/server.ts",
+    "build": "tsc",
+    "start": "node dist/api/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "api",
-    "rest",
-    "zero-dependency",
-    "nodejs"
-  ],
-  "author": "DirectorOfOne",
+  "keywords": ["director", "automation", "api", "express"],
+  "author": "Utlyze",
   "license": "MIT",
-  "engines": {
-    "node": ">=14.0.0"
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "@vercel/node": "^3.2.24",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
 }

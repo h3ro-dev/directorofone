@@ -73,7 +73,7 @@ const TASK_REGISTRY = {
     estimatedHours: 4,
     priority: 'CRITICAL',
     prompt: `Build landing page for ${SITE_CONFIG.name}. Hero, pain points, solution, features, testimonials, CTAs. Multiple consultation CTAs.`,
-    completionCheck: () => fs.existsSync('frontend/src/app/page.tsx')
+    completionCheck: () => fs.existsSync('frontend/app/page.tsx')
   },
 
   // Backend Tasks

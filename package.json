@@ -1,0 +1,20 @@
+{
+  "name": "directorofone",
+  "version": "1.0.0",
+  "description": "One-person department optimization",
+  "scripts": {
+    "orchestrate": "node scripts/agent-orchestrator.js",
+    "background": "echo \"Background agent started with prompt:\" && echo $CURSOR_BACKGROUND_AGENT_PROMPT",
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx"
+  },
+  "keywords": [
+    "director",
+    "of",
+    "one"
+  ],
+  "author": "Utlyze",
+  "license": "MIT"
+}

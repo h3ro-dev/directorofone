@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Director of One - Empowering one-person departments to achieve more. Build systems, maximize impact, and thrive as a solo department head.">
+    <meta name="keywords" content="director of one, one person department, solo department head, single person team, department of one">
+    <title>Director of One - Master the Art of Being a One-Person Department</title>
+    <link rel="stylesheet" href="../src/styles/design-system.css">
+    <style>
+        /* Additional custom styles for the landing page */
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-primary-100);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-4);
+            color: var(--color-primary-600);
+            font-size: var(--text-2xl);
+        }
+        
+        .testimonial {
+            border-left: 4px solid var(--color-primary-500);
+            padding-left: var(--space-6);
+        }
+        
+        .stat-number {
+            font-size: var(--text-4xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary-500);
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: var(--z-50);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .nav-container {
+            padding: var(--space-4) 0;
+        }
+        
+        .logo {
+            font-size: var(--text-xl);
+            font-weight: var(--font-bold);
+            color: var(--color-primary-600);
+        }
+        
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: var(--space-8);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-links a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: var(--font-medium);
+            transition: var(--transition-colors);
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-primary-500);
+        }
+        
+        body {
+            padding-top: 80px; /* Account for fixed nav */
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-600) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-600) 100%);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container nav-container">
+            <div class="flex justify-between items-center">
+                <div class="logo">Director of One</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#get-started">Get Started</a></li>
+                </ul>
+                <button class="btn btn-primary btn-small">Join Now</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="heading-1 gradient-text">Master the Art of Being a Director of One</h1>
+                <p class="body-large text-secondary" style="max-width: 600px; margin: var(--space-6) auto;">
+                    Build systems, maximize impact, and thrive as a one-person department. 
+                    We provide the framework, tools, and strategies to help you excel in your unique role.
+                </p>
+                <div class="flex gap-4 justify-center" style="margin-top: var(--space-8);">
+                    <button class="btn btn-primary btn-large">Start Your Journey</button>
+                    <button class="btn btn-outline btn-large">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="heading-2">The Challenge of Running a Department Alone</h2>
+                    <p class="body-large text-secondary">
+                        You wear multiple hats, juggle competing priorities, and face unique challenges 
+                        that traditional management advice doesn't address.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-top: var(--space-6);">
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-error);">✗</span>
+                            <span class="text-secondary">Overwhelming workload with no delegation options</span>
+                        </li>
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-error);">✗</span>
+                            <span class="text-secondary">Difficulty proving value without a team's output</span>
+                        </li>
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-error);">✗</span>
+                            <span class="text-secondary">Limited resources and budget constraints</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span style="color: var(--color-error);">✗</span>
+                            <span class="text-secondary">Isolation without peers in similar roles</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="heading-2">The Blueprint for Solo Success</h2>
+                    <p class="body-large text-secondary">
+                        We provide proven strategies specifically designed for one-person departments, 
+                        helping you transform challenges into opportunities.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-top: var(--space-6);">
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-success);">✓</span>
+                            <span class="text-secondary">Strategic frameworks that maximize your impact</span>
+                        </li>
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-success);">✓</span>
+                            <span class="text-secondary">Automation tools to multiply your productivity</span>
+                        </li>
+                        <li class="flex gap-3" style="margin-bottom: var(--space-3);">
+                            <span style="color: var(--color-success);">✓</span>
+                            <span class="text-secondary">Templates and systems for efficient operations</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span style="color: var(--color-success);">✓</span>
+                            <span class="text-secondary">Community of peers who understand your journey</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features/Benefits Section -->
+    <section class="section bg-secondary" id="features">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: var(--space-12);">
+                <h2 class="heading-2">Everything You Need to Excel as a Director of One</h2>
+                <p class="body-large text-secondary" style="max-width: 600px; margin: var(--space-4) auto;">
+                    Transform overwhelming workloads into manageable workflows with our comprehensive toolkit
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="heading-5">Strategic Frameworks</h3>
+                    <p class="body-default text-secondary">
+                        Goal-setting templates, OKRs, and decision matrices designed for solo operators
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="heading-5">Productivity Tools</h3>
+                    <p class="body-default text-secondary">
+                        Time management systems, automation workflows, and task prioritization methods
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="heading-5">Community Access</h3>
+                    <p class="body-default text-secondary">
+                        Connect with other Directors of One for support, advice, and best practices
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="heading-5">Expert Guidance</h3>
+                    <p class="body-default text-secondary">
+                        Monthly workshops, office hours, and personalized coaching opportunities
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Benefits -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="margin-top: var(--space-16);">
+                <div class="text-center">
+                    <div class="stat-number">87%</div>
+                    <p class="body-large font-semibold">Productivity Increase</p>
+                    <p class="body-small text-tertiary">Average improvement in task completion</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">3.5x</div>
+                    <p class="body-large font-semibold">ROI on Time</p>
+                    <p class="body-small text-tertiary">Return on time invested in our systems</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number">92%</div>
+                    <p class="body-large font-semibold">Success Rate</p>
+                    <p class="body-small text-tertiary">Members achieving their quarterly goals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Pillars Section -->
+    <section class="section" id="benefits">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: var(--space-12);">
+                <h2 class="heading-2">Your Path to Mastery</h2>
+                <p class="body-large text-secondary" style="max-width: 600px; margin: var(--space-4) auto;">
+                    Develop skills across four key areas that make you invaluable to your organization
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card card-hover">
+                    <h3 class="heading-4 gradient-text">Productivity & Workflow Optimization</h3>
+                    <p class="body-default text-secondary" style="margin: var(--space-4) 0;">
+                        Master the art of doing more with less through proven systems and automation
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Time blocking and energy management</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Automation tools and workflows</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Task batching strategies</li>
+                        <li class="body-small text-secondary">• Project management for one</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-hover">
+                    <h3 class="heading-4 gradient-text">Strategic Planning & Decision Making</h3>
+                    <p class="body-default text-secondary" style="margin: var(--space-4) 0;">
+                        Make decisions that matter with frameworks designed for solo leaders
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• OKRs for one-person departments</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Data-driven decision frameworks</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Resource allocation strategies</li>
+                        <li class="body-small text-secondary">• Stakeholder management tactics</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-hover">
+                    <h3 class="heading-4 gradient-text">Professional Development</h3>
+                    <p class="body-default text-secondary" style="margin: var(--space-4) 0;">
+                        Grow your skills and advance your career as a Director of One
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Skill gap analysis tools</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Personal branding strategies</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Career advancement roadmaps</li>
+                        <li class="body-small text-secondary">• Work-life integration techniques</li>
+                    </ul>
+                </div>
+                
+                <div class="card card-hover">
+                    <h3 class="heading-4 gradient-text">Tools & Technology</h3>
+                    <p class="body-default text-secondary" style="margin: var(--space-4) 0;">
+                        Build your perfect tech stack with cost-effective, powerful solutions
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Software recommendations</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Integration strategies</li>
+                        <li class="body-small text-secondary" style="margin-bottom: var(--space-2);">• Budget-friendly alternatives</li>
+                        <li class="body-small text-secondary">• Tech stack optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="section bg-secondary" id="testimonials">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: var(--space-12);">
+                <h2 class="heading-2">Success Stories from Directors of One</h2>
+                <p class="body-large text-secondary" style="max-width: 600px; margin: var(--space-4) auto;">
+                    Join thousands who have transformed their one-person departments
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card">
+                    <div class="testimonial">
+                        <p class="body-default text-secondary" style="margin-bottom: var(--space-4);">
+                            "The frameworks here helped me reduce my workload by 40% while actually increasing my department's output. Game-changing!"
+                        </p>
+                        <p class="font-semibold">Sarah Chen</p>
+                        <p class="caption text-tertiary">Director of Analytics, TechCorp</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="testimonial">
+                        <p class="body-default text-secondary" style="margin-bottom: var(--space-4);">
+                            "Finally, resources that understand the unique challenges of being a solo operator. The community alone is worth it."
+                        </p>
+                        <p class="font-semibold">Marcus Johnson</p>
+                        <p class="caption text-tertiary">Head of Customer Success, StartupXYZ</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="testimonial">
+                        <p class="body-default text-secondary" style="margin-bottom: var(--space-4);">
+                            "I went from overwhelmed to organized in just 30 days. The productivity tools and templates are incredibly practical."
+                        </p>
+                        <p class="font-semibold">Alex Rivera</p>
+                        <p class="caption text-tertiary">Marketing Director, NonProfit Plus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="get-started">
+        <div class="container text-center">
+            <h2 class="heading-2" style="color: white;">Ready to Master Your One-Person Department?</h2>
+            <p class="body-large" style="max-width: 600px; margin: var(--space-6) auto; opacity: 0.9;">
+                Join thousands of Directors of One who are maximizing their impact and advancing their careers. 
+                Because being a department of one doesn't mean going it alone.
+            </p>
+            <div class="flex gap-4 justify-center" style="margin-top: var(--space-8);">
+                <button class="btn btn-large" style="background-color: white; color: var(--color-primary-600);">
+                    Get Started Today
+                </button>
+                <button class="btn btn-outline btn-large" style="border-color: white; color: white;">
+                    Join Our Community
+                </button>
+            </div>
+            <p class="body-small" style="margin-top: var(--space-6); opacity: 0.8;">
+                Free 14-day trial • No credit card required • Cancel anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section bg-tertiary">
+        <div class="container">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="heading-6" style="margin-bottom: var(--space-4);">Director of One</h3>
+                    <p class="body-small text-secondary">
+                        Empowering one-person departments to achieve more.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold" style="margin-bottom: var(--space-4);">Resources</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Blog</a>
+                        </li>
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Templates</a>
+                        </li>
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Courses</a>
+                        </li>
+                        <li>
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Community</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold" style="margin-bottom: var(--space-4);">Company</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">About</a>
+                        </li>
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Contact</a>
+                        </li>
+                        <li style="margin-bottom: var(--space-2);">
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Privacy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="body-small text-secondary" style="text-decoration: none;">Terms</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold" style="margin-bottom: var(--space-4);">Connect</h4>
+                    <p class="body-small text-secondary" style="margin-bottom: var(--space-3);">
+                        Stay updated with tips and strategies for Directors of One.
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Your email" 
+                               style="flex: 1; padding: var(--space-2); border: 1px solid var(--color-neutral-300); 
+                                      border-radius: var(--radius-md); font-size: var(--text-sm);">
+                        <button class="btn btn-primary btn-small">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: var(--space-12); padding-top: var(--space-6); 
+                        border-top: 1px solid var(--color-neutral-200); text-align: center;">
+                <p class="caption text-tertiary">
+                    © 2024 Director of One. All rights reserved. Built by Utlyze.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple smooth scroll script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

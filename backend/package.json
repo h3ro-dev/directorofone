@@ -1,0 +1,26 @@
+{
+  "name": "directorofone-api",
+  "version": "1.0.0",
+  "description": "Zero-dependency API server for DirectorOfOne",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "NODE_ENV=development node src/server.js",
+    "prod": "NODE_ENV=production node src/server.js",
+    "test": "echo \"No tests configured yet\"",
+    "health": "curl -s http://localhost:3000/health | jq"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "zero-dependency",
+    "nodejs"
+  ],
+  "author": "DirectorOfOne",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

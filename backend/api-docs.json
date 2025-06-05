@@ -1,0 +1,205 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "DirectorOfOne API",
+    "version": "1.0.0",
+    "description": "Zero-dependency REST API for DirectorOfOne task management",
+    "contact": {
+      "name": "DirectorOfOne Team",
+      "email": "api@directorofone.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "Development server"
+    },
+    {
+      "url": "https://api.directorofone.com/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "tags": ["Health"],
+        "responses": {
+          "200": {
+            "description": "API is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string" },
+                    "timestamp": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 10 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of users with pagination"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create new user",
+        "tags": ["Users"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "email", "password"],
+                "properties": {
+                  "username": { "type": "string" },
+                  "email": { "type": "string" },
+                  "password": { "type": "string" },
+                  "role": { "type": "string", "default": "user" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "summary": "Get all tasks",
+        "tags": ["Tasks"],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { 
+              "type": "string",
+              "enum": ["todo", "in_progress", "done", "archived"]
+            }
+          },
+          {
+            "name": "priority",
+            "in": "query",
+            "schema": { 
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            }
+          },
+          {
+            "name": "assignedTo",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": { "type": "string", "default": "createdAt" }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": { 
+              "type": "string",
+              "enum": ["asc", "desc"],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": { "type": "integer", "default": 1 }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": { "type": "integer", "default": 10 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of tasks with pagination"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create new task",
+        "tags": ["Tasks"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["title"],
+                "properties": {
+                  "title": { "type": "string" },
+                  "description": { "type": "string" },
+                  "status": { 
+                    "type": "string",
+                    "enum": ["todo", "in_progress", "done", "archived"],
+                    "default": "todo"
+                  },
+                  "priority": { 
+                    "type": "string",
+                    "enum": ["low", "medium", "high"],
+                    "default": "medium"
+                  },
+                  "assignedTo": { "type": "string" },
+                  "tags": { 
+                    "type": "array",
+                    "items": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Task created successfully"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

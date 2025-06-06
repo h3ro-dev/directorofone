@@ -15,10 +15,7 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "incremental": true,
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "types": ["node"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]

@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect } from 'react';
 import { Hero, Features, Container, Section, Heading, Text, Button, Grid, Card, CardHeader, CardTitle, CardDescription } from '../src/components';
 import { initTheme } from '../src/styles/design-system';
@@ -54,16 +53,31 @@ export default function Home() {
     initTheme();
   }, []);
 
+
+  const featuresWithIcons = landingContent.features.items.map((feature, index) => ({
+    ...feature,
+    icon: featureIconMap[index],
+  }));
+
+  // Override the secondary action to point to dashboard
+  const heroWithDashboardLink = {
+    ...landingContent.hero,
+    secondaryAction: {
+      label: "View Dashboard Demo",
+      href: "/dashboard"
+    }
+  };
+
   return (
     <main>
       {/* Hero Section */}
       <Hero
-        badge={landingContent.hero.badge}
-        title={landingContent.hero.title}
-        subtitle={landingContent.hero.subtitle}
-        description={landingContent.hero.description}
-        primaryAction={landingContent.hero.primaryAction}
-        secondaryAction={landingContent.hero.secondaryAction}
+        badge={heroWithDashboardLink.badge}
+        title={heroWithDashboardLink.title}
+        subtitle={heroWithDashboardLink.subtitle}
+        description={heroWithDashboardLink.description}
+        primaryAction={heroWithDashboardLink.primaryAction}
+        secondaryAction={heroWithDashboardLink.secondaryAction}
         align="center"
         variant="simple"
       />
@@ -113,7 +127,7 @@ export default function Home() {
               size="xl"
               variant="secondary"
               className="bg-white text-brand-600 hover:bg-white/90"
-            >
+            
               {landingContent.cta.primaryAction.label}
             </Button>
             <Text variant="small" className="text-white/70 mt-4">

@@ -10,6 +10,18 @@ const { promisify } = require('util');
 const config = require('./config/config');
 const router = require('./routes/router');
 const { logRequest, errorHandler } = require('./middleware/middleware');
+const database = require('./utils/database');
+
+// Initialize database
+async function initializeDatabase() {
+  try {
+    await database.initialize();
+    console.log('Database initialized successfully');
+  } catch (error) {
+    console.error('Failed to initialize database:', error);
+    process.exit(1);
+  }
+}
 
 // Create server
 const server = http.createServer(async (req, res) => {
@@ -76,26 +88,31 @@ async function parseBody(req) {
 }
 
 // Start server
-const PORT = process.env.PORT || config.port || 3000;
+const PORT = process.env.PORT || config.port || 3001;
 const HOST = process.env.HOST || config.host || '0.0.0.0';
 
-server.listen(PORT, HOST, () => {
-  console.log(`API Server running at http://${HOST}:${PORT}/`);
-  console.log('Press Ctrl+C to stop');
+// Initialize database and start server
+initializeDatabase().then(() => {
+  server.listen(PORT, HOST, () => {
+    console.log(`API Server running at http://${HOST}:${PORT}/`);
+    console.log('Press Ctrl+C to stop');
+  });
 });
 
 // Graceful shutdown
-process.on('SIGTERM', () => {
+process.on('SIGTERM', async () => {
   console.log('SIGTERM signal received: closing HTTP server');
-  server.close(() => {
+  server.close(async () => {
+    await database.close();
     console.log('HTTP server closed');
     process.exit(0);
   });
 });
 
-process.on('SIGINT', () => {
+process.on('SIGINT', async () => {
   console.log('SIGINT signal received: closing HTTP server');
-  server.close(() => {
+  server.close(async () => {
+    await database.close();
     console.log('HTTP server closed');
     process.exit(0);
   });

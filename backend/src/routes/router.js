@@ -1,11 +1,12 @@
 const config = require('../config/config');
 const { jsonResponse } = require('../middleware/middleware');
+const { authenticate, authRateLimit } = require('../middleware/auth');
 
 // Import route handlers
 const healthRoutes = require('./health.routes');
 const userRoutes = require('./user.routes');
 const taskRoutes = require('./task.routes');
-const integrationRoutes = require('./integrations.routes');
+const authRoutes = require('./auth');
 
 // Route registry
 const routes = new Map();
@@ -130,6 +131,20 @@ mainRouter.get('/api/v1/status', healthRoutes.detailedStatus);
 // API routes
 const apiRouter = new Router();
 
+// Authentication routes (public)
+apiRouter.post('/auth/register', authRateLimit, authRoutes.register);
+apiRouter.post('/auth/login', authRateLimit, authRoutes.login);
+apiRouter.post('/auth/refresh', authRoutes.refreshAccessToken);
+apiRouter.post('/auth/forgot-password', authRateLimit, authRoutes.forgotPassword);
+apiRouter.post('/auth/reset-password', authRoutes.resetPassword);
+apiRouter.get('/auth/verify-email', authRoutes.verifyEmail);
+
+// Authentication routes (protected)
+apiRouter.post('/auth/logout', authenticate, authRoutes.logout);
+apiRouter.get('/auth/me', authenticate, authRoutes.getCurrentUser);
+apiRouter.put('/auth/me', authenticate, authRoutes.updateCurrentUser);
+apiRouter.post('/auth/change-password', authenticate, authRoutes.changePassword);
+
 // User routes
 apiRouter.get('/users', userRoutes.getAllUsers);
 apiRouter.get('/users/:id', userRoutes.getUserById);
@@ -145,14 +160,6 @@ apiRouter.put('/tasks/:id', taskRoutes.updateTask);
 apiRouter.delete('/tasks/:id', taskRoutes.deleteTask);
 apiRouter.patch('/tasks/:id/status', taskRoutes.updateTaskStatus);
 
-// Integration routes
-apiRouter.get('/integrations/available', integrationRoutes.getAvailableIntegrations);
-apiRouter.get('/integrations/connected', integrationRoutes.getConnectedIntegrations);
-apiRouter.get('/integrations/stats', integrationRoutes.getIntegrationStats);
-apiRouter.post('/integrations/connect', integrationRoutes.connectIntegration);
-apiRouter.post('/integrations/:connectionId/sync', integrationRoutes.syncIntegration);
-apiRouter.delete('/integrations/:connectionId', integrationRoutes.disconnectIntegration);
-
 // Mount API routes
 mainRouter.use(config.apiPrefix, apiRouter);
 
@@ -164,7 +171,15 @@ mainRouter.get('/', (req, res) => {
     endpoints: {
       health: '/health',
       api: config.apiPrefix,
-      documentation: '/api/v1/docs'
+      documentation: '/api/v1/docs',
+      auth: {
+        register: `${config.apiPrefix}/auth/register`,
+        login: `${config.apiPrefix}/auth/login`,
+        refresh: `${config.apiPrefix}/auth/refresh`,
+        forgotPassword: `${config.apiPrefix}/auth/forgot-password`,
+        resetPassword: `${config.apiPrefix}/auth/reset-password`,
+        verifyEmail: `${config.apiPrefix}/auth/verify-email`
+      }
     }
   });
 });

@@ -1,9 +1,9 @@
 'use client';
-
 import { useEffect } from 'react';
 import { Hero, Features, Container, Section, Heading, Text, Button, Grid, Card, CardHeader, CardTitle, CardDescription } from '../src/components';
 import { initTheme } from '../src/styles/design-system';
 import landingContent from '../../content/copy/landing.json';
+import { IntegrationsPreview } from '@/src/components/sections/IntegrationsPreview';
 
 // Icons for features
 const FeatureIcons = {
@@ -53,6 +53,7 @@ export default function Home() {
     initTheme();
   }, []);
 
+
   const featuresWithIcons = landingContent.features.items.map((feature, index) => ({
     ...feature,
     icon: featureIconMap[index],
@@ -86,10 +87,12 @@ export default function Home() {
         title={landingContent.features.title}
         subtitle={landingContent.features.subtitle}
         description={landingContent.features.description}
-        features={featuresWithIcons}
-        columns={3}
+        features={landingContent.features.items}
+        icons={featureIconMap}
         variant="cards"
       />
+
+      <IntegrationsPreview />
 
       {/* Benefits Section */}
       <Section className="bg-background">
@@ -124,7 +127,7 @@ export default function Home() {
               size="xl"
               variant="secondary"
               className="bg-white text-brand-600 hover:bg-white/90"
-            >
+            
               {landingContent.cta.primaryAction.label}
             </Button>
             <Text variant="small" className="text-white/70 mt-4">

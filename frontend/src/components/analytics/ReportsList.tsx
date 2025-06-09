@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { GeneratedReport, ReportType } from '@/src/types/analytics';
+import { GeneratedReport, ReportType } from '@/types/analytics';
 
 interface ReportsListProps {
   reports: GeneratedReport[];

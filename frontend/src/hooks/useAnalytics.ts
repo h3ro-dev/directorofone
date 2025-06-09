@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { EventType } from '@/src/types/analytics';
+import { EventType } from '@/types/analytics';
 
 interface TrackEventOptions {
   eventType: EventType;

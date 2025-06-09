@@ -6,7 +6,7 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import { DashboardMetrics, ChartData, DateRange } from '@/src/types/analytics';
+import { DashboardMetrics, ChartData, DateRange } from '@/types/analytics';
 import DateRangePicker from './DateRangePicker';
 import MetricCard from './MetricCard';
 import ChartCard from './ChartCard';

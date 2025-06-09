@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Container, Section, Grid, Stack } from '@/src/components/layout/Container';
-import Card, { CardHeader, CardContent } from '@/src/components/ui/Card';
-import Button from '@/src/components/ui/Button';
-import { Badge } from '@/src/components/ui/Typography';
+import { Container, Section, Grid, Stack } from '@/components/layout/Container';
+import Card, { CardHeader, CardContent } from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Typography';
 
 interface Integration {
   id: string;
@@ -213,7 +213,7 @@ export default function IntegrationsPage() {
                           </p>
                         </div>
                       </div>
-                      <Badge variant="success">Active</Badge>
+                      <Badge className="bg-green-100 text-green-800">Active</Badge>
                     </div>
                     
                     <div className="space-y-2 mb-4">
@@ -291,10 +291,10 @@ export default function IntegrationsPage() {
                       </div>
                     </div>
                     {integration.status === 'coming-soon' && (
-                      <Badge variant="default">Coming Soon</Badge>
+                      <Badge className="bg-gray-100 text-gray-800">Coming Soon</Badge>
                     )}
                     {integration.status === 'premium' && (
-                      <Badge variant="warning">Premium</Badge>
+                      <Badge className="bg-yellow-100 text-yellow-800">Premium</Badge>
                     )}
                   </div>
 
@@ -327,7 +327,7 @@ export default function IntegrationsPage() {
                     </Button>
                   )}
                   {integration.status === 'premium' && (
-                    <Button variant="warning" className="w-full">
+                    <Button variant="secondary" className="w-full">
                       Upgrade to Premium
                     </Button>
                   )}

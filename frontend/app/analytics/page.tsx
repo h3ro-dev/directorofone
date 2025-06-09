@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import AnalyticsDashboard from '@/src/components/analytics/AnalyticsDashboard';
-import ReportsSection from '@/src/components/analytics/ReportsSection';
+import AnalyticsDashboard from '@/components/analytics/AnalyticsDashboard';
+import ReportsSection from '@/components/analytics/ReportsSection';
 import { 
   DashboardMetrics, 
   ChartData,
   DateRange 
-} from '@/src/types/analytics';
+} from '@/types/analytics';
 
 export default function AnalyticsPage() {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'reports'>('dashboard');

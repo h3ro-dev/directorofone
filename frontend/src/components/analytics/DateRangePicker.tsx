@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { format } from 'date-fns';
-import { DateRange } from '@/src/types/analytics';
+import { DateRange } from '@/types/analytics';
 
 interface DateRangePickerProps {
   dateRange: DateRange;

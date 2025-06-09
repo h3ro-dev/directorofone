@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ReportConfig, ReportType, DateRange } from '@/src/types/analytics';
+import { ReportConfig, ReportType, DateRange } from '@/types/analytics';
 
 interface ReportGeneratorProps {
   onGenerate: (config: Omit<ReportConfig, 'id'>) => void;

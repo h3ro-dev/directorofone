@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Heading, Text } from '@/components/ui/Typography';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 import { WorkflowBuilder, Workflow } from '@/components/dashboard';
 
 // Sample workflows

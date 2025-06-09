@@ -7,7 +7,7 @@ import {
   ReportConfig, 
   ReportType,
   DateRange 
-} from '@/src/types/analytics';
+} from '@/types/analytics';
 import ReportGenerator from './ReportGenerator';
 import ReportsList from './ReportsList';
 

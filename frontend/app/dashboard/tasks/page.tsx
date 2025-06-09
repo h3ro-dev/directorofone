@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Heading, Text } from '@/components/ui/Typography';
 import Card, { CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import Button from '@/components/ui/Button';
 import { TaskItem, Task } from '@/components/dashboard';
 
 // Sample tasks data

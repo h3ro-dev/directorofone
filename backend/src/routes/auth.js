@@ -359,14 +359,26 @@ const verifyEmail = async (req, res) => {
 // Get current user
 const getCurrentUser = async (req, res) => {
   try {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({
-      user: req.user.toJSON()
-    }));
+    if (!req.user) {
+      if (!res.headersSent) {
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'User not authenticated' }));
+      }
+      return;
+    }
+    
+    if (!res.headersSent) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        user: req.user.toJSON()
+      }));
+    }
   } catch (error) {
     console.error('Get current user error:', error);
-    res.writeHead(500, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Failed to get user data' }));
+    if (!res.headersSent) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Failed to get user data' }));
+    }
   }
 };
 

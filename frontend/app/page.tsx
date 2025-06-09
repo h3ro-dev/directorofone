@@ -1,9 +1,45 @@
 'use client';
-import { useEffect } from 'react';
-import { Hero, Features, Container, Section, Heading, Text, Button, Grid, Card, CardHeader, CardTitle, CardDescription } from '../src/components';
-import { initTheme } from '../src/styles/design-system';
-import landingContent from '../../content/copy/landing.json';
-import { IntegrationsPreview } from '@/src/components/sections/IntegrationsPreview';
+import { Hero, Features, Container, Section, Heading, Text, Button, Grid, Card, CardHeader, CardTitle, CardDescription } from '@/components';
+// import { IntegrationsPreview } from '@/components/sections/IntegrationsPreview';
+
+// Landing page content
+const landingContent = {
+  hero: {
+    badge: "Director of One",
+    title: "You're the Director of Everything",
+    subtitle: "Turn your one-person department into a high-performing operation",
+    description: "When you're the entire department, every task falls on your shoulders. Director of One gives you the AI-powered tools to automate routine operations, manage priorities, and finally have time for strategic thinking.",
+    primaryAction: { label: "Start Your Free Consultation", href: "/consultation" },
+    secondaryAction: { label: "See How It Works", href: "/demo" }
+  },
+  features: {
+    title: "Everything You Need to Run Your Department",
+    subtitle: "AI-powered automation for one-person teams",
+    description: "Stop juggling everything manually. Get the tools that let you focus on what matters.",
+    items: [
+      { title: "Smart Automation", description: "Automate routine tasks and workflows" },
+      { title: "Priority Management", description: "AI-powered task prioritization" },
+      { title: "Analytics Dashboard", description: "Track performance and identify bottlenecks" },
+      { title: "AI Assistant", description: "Get intelligent recommendations" },
+      { title: "Integrations", description: "Connect your existing tools" },
+      { title: "Reporting", description: "Automated status reports" }
+    ]
+  },
+  benefits: {
+    title: "Save 10+ Hours Per Week",
+    items: [
+      { title: "Focus on Strategy", description: "Less time on admin, more on big picture thinking" },
+      { title: "Never Miss Deadlines", description: "Automated reminders and priority management" },
+      { title: "Data-Driven Decisions", description: "Clear insights into your department's performance" }
+    ]
+  },
+  cta: {
+    title: "Ready to Transform Your Department?",
+    description: "Join hundreds of directors who've automated their operations.",
+    primaryAction: { label: "Get Started Today", href: "/consultation" },
+    note: "Free 30-minute consultation • No commitment required"
+  }
+};
 
 // Icons for features
 const FeatureIcons = {
@@ -49,11 +85,6 @@ const featureIconMap = [
 ];
 
 export default function Home() {
-  useEffect(() => {
-    initTheme();
-  }, []);
-
-
   const featuresWithIcons = landingContent.features.items.map((feature, index) => ({
     ...feature,
     icon: featureIconMap[index],
@@ -71,41 +102,49 @@ export default function Home() {
   return (
     <main>
       {/* Hero Section */}
-      <Hero
-        badge={heroWithDashboardLink.badge}
-        title={heroWithDashboardLink.title}
-        subtitle={heroWithDashboardLink.subtitle}
-        description={heroWithDashboardLink.description}
-        primaryAction={heroWithDashboardLink.primaryAction}
-        secondaryAction={heroWithDashboardLink.secondaryAction}
-        align="center"
-        variant="simple"
-      />
+      <div className="animate-fade-in">
+        <Hero
+          badge={heroWithDashboardLink.badge}
+          title={heroWithDashboardLink.title}
+          subtitle={heroWithDashboardLink.subtitle}
+          description={heroWithDashboardLink.description}
+          primaryAction={heroWithDashboardLink.primaryAction}
+          secondaryAction={heroWithDashboardLink.secondaryAction}
+          align="center"
+          variant="simple"
+        />
+      </div>
 
       {/* Features Section */}
-      <Features
-        title={landingContent.features.title}
-        subtitle={landingContent.features.subtitle}
-        description={landingContent.features.description}
-        features={landingContent.features.items}
-        icons={featureIconMap}
-        variant="cards"
-      />
+      <div className="animate-fade-in animation-delay-200">
+        <Features
+          title={landingContent.features.title}
+          subtitle={landingContent.features.subtitle}
+          description={landingContent.features.description}
+          features={landingContent.features.items}
+          variant="cards"
+        />
+      </div>
 
-      <IntegrationsPreview />
+      {/* <IntegrationsPreview /> */}
 
       {/* Benefits Section */}
-      <Section className="bg-background">
+      <Section className="bg-gradient-to-br from-gray-50 to-primary-50 animate-fade-in animation-delay-400">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <Heading as="h2">{landingContent.benefits.title}</Heading>
+            <Heading as="h2" className="gradient-text text-4xl">{landingContent.benefits.title}</Heading>
           </div>
           <Grid cols={3} gap="lg">
             {landingContent.benefits.items.map((benefit, index) => (
-              <Card key={index} variant="elevated" hover>
+              <Card 
+                key={index} 
+                variant="professional" 
+                hover
+                className={`animate-slide-up animation-delay-${600 + index * 200}`}
+              >
                 <CardHeader>
-                  <CardTitle>{benefit.title}</CardTitle>
-                  <CardDescription>{benefit.description}</CardDescription>
+                  <CardTitle className="text-primary-700">{benefit.title}</CardTitle>
+                  <CardDescription className="text-gray-600">{benefit.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -114,23 +153,27 @@ export default function Home() {
       </Section>
 
       {/* CTA Section */}
-      <Section className="bg-gradient-to-br from-brand-600 to-brand-700 text-white">
+      <Section className="bg-gradient-to-br from-primary-600 to-accent-600 text-white animate-fade-in animation-delay-800">
         <Container>
-          <div className="text-center max-w-3xl mx-auto">
-            <Heading as="h2" className="text-white mb-4">
+          <div className="text-center max-w-3xl mx-auto relative">
+            {/* Floating elements for visual interest */}
+            <div className="absolute -top-10 -left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse" />
+            <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-accent-400/20 rounded-full blur-2xl animate-pulse animation-delay-400" />
+            
+            <Heading as="h2" className="text-white mb-4 animate-slide-up">
               {landingContent.cta.title}
             </Heading>
-            <Text variant="lead" className="text-white/90 mb-8">
+            <Text variant="lead" className="text-white/90 mb-8 animate-slide-up animation-delay-200">
               {landingContent.cta.description}
             </Text>
             <Button
               size="xl"
               variant="secondary"
-              className="bg-white text-brand-600 hover:bg-white/90"
-            
+              className="bg-white text-primary-600 hover:bg-white/90 shadow-accent hover-lift animate-slide-up animation-delay-400"
+            >
               {landingContent.cta.primaryAction.label}
             </Button>
-            <Text variant="small" className="text-white/70 mt-4">
+            <Text variant="small" className="text-white/70 mt-4 animate-fade-in animation-delay-600">
               {landingContent.cta.note}
             </Text>
           </div>

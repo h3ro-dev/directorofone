@@ -1,19 +1,21 @@
 import React, { HTMLAttributes, forwardRef } from 'react';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'bordered' | 'elevated';
+  variant?: 'default' | 'bordered' | 'elevated' | 'gradient' | 'professional';
   padding?: 'none' | 'sm' | 'md' | 'lg';
   hover?: boolean;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className = '', variant = 'default', padding = 'md', hover = false, children, ...props }, ref) => {
-    const baseStyles = 'rounded-xl transition-all';
+    const baseStyles = 'rounded-xl transition-all duration-300';
     
     const variants = {
       default: 'bg-card text-card-foreground',
       bordered: 'bg-card text-card-foreground border border-border',
-      elevated: 'bg-card text-card-foreground shadow-lg',
+      elevated: 'bg-card text-card-foreground shadow-professional-lg',
+      gradient: 'bg-gradient-to-br from-primary-50 to-accent-50 text-card-foreground',
+      professional: 'bg-white text-gray-900 shadow-professional border border-gray-100',
     };
     
     const paddings = {
@@ -23,7 +25,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       lg: 'p-8',
     };
     
-    const hoverClass = hover ? 'hover:shadow-xl hover:-translate-y-1' : '';
+    const hoverClass = hover ? 'hover:shadow-professional-lg hover:-translate-y-1 hover:border-accent-200' : '';
     
     return (
       <div

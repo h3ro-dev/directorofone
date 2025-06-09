@@ -1,15 +1,56 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import design system CSS variables */
+@import '../src/styles/design-system/css-variables.css';
 
 :root {
+  /* Director of One colors */
+  --color-primary-50: #EFF6FF;
+  --color-primary-100: #DBEAFE;
+  --color-primary-200: #BFDBFE;
+  --color-primary-300: #93BBFD;
+  --color-primary-400: #6090FA;
+  --color-primary-500: #4169E1;
+  --color-primary-600: #3355CB;
+  --color-primary-700: #2B47B0;
+  --color-primary-800: #253A8E;
+  --color-primary-900: #1E2F6F;
+  
+  --color-accent-50: #E6F7F2;
+  --color-accent-100: #CCEFE5;
+  --color-accent-200: #99DECC;
+  --color-accent-300: #66CEB2;
+  --color-accent-400: #33BD99;
+  --color-accent-500: #00A878;
+  --color-accent-600: #008A62;
+  --color-accent-700: #006B4C;
+  --color-accent-800: #004D36;
+  --color-accent-900: #002E20;
+  
+  /* Base settings */
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  
+  /* Component settings */
+  --primary: 219 79% 56%; /* HSL for #4169E1 */
+  --primary-foreground: 0 0% 100%;
+  --accent: 161 100% 33%; /* HSL for #00A878 */
+  --accent-foreground: 0 0% 100%;
+  --secondary: 161 100% 33%;
+  --secondary-foreground: 0 0% 100%;
+  
+  /* Animation durations */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  
+  /* Easing functions */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +60,71 @@
   }
 }
 
+/* Base styles */
+* {
+  @apply border-border;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Utility classes */
+@layer utilities {
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animation-delay-800 {
+    animation-delay: 800ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-br from-primary-600 to-accent-500 bg-clip-text text-transparent;
+  }
+  
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Professional shadow effects */
+.shadow-professional {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.shadow-professional-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-professional-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Accent shadow for CTAs */
+.shadow-accent {
+  box-shadow: 0 4px 14px 0 rgba(0, 168, 120, 0.25);
 }

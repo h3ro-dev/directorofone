@@ -1,17 +1,29 @@
 @layer base {
   :root {
-    /* Brand Colors */
-    --color-brand-50: #f0f9ff;
-    --color-brand-100: #e0f2fe;
-    --color-brand-200: #bae6fd;
-    --color-brand-300: #7dd3fc;
-    --color-brand-400: #38bdf8;
-    --color-brand-500: #0ea5e9;
-    --color-brand-600: #0284c7;
-    --color-brand-700: #0369a1;
-    --color-brand-800: #075985;
-    --color-brand-900: #0c4a6e;
-    --color-brand-950: #082f49;
+    /* Brand Colors - Director of One Primary (Utlyze Blue) */
+    --color-brand-50: #EFF6FF;
+    --color-brand-100: #DBEAFE;
+    --color-brand-200: #BFDBFE;
+    --color-brand-300: #93BBFD;
+    --color-brand-400: #6090FA;
+    --color-brand-500: #4169E1;
+    --color-brand-600: #3355CB;
+    --color-brand-700: #2B47B0;
+    --color-brand-800: #253A8E;
+    --color-brand-900: #1E2F6F;
+    --color-brand-950: #182551;
+    
+    /* Accent Colors - Director Green */
+    --color-accent-50: #E6F7F2;
+    --color-accent-100: #CCEFE5;
+    --color-accent-200: #99DECC;
+    --color-accent-300: #66CEB2;
+    --color-accent-400: #33BD99;
+    --color-accent-500: #00A878;
+    --color-accent-600: #008A62;
+    --color-accent-700: #006B4C;
+    --color-accent-800: #004D36;
+    --color-accent-900: #002E20;
     
     /* Neutral Colors */
     --color-neutral-50: #fafafa;
@@ -98,14 +110,14 @@
     --card-foreground: var(--color-neutral-900);
     --popover: white;
     --popover-foreground: var(--color-neutral-900);
-    --primary: var(--color-brand-600);
+    --primary: var(--color-brand-500);
     --primary-foreground: white;
-    --secondary: var(--color-neutral-200);
-    --secondary-foreground: var(--color-neutral-900);
+    --secondary: var(--color-accent-500);
+    --secondary-foreground: white;
     --muted: var(--color-neutral-100);
     --muted-foreground: var(--color-neutral-600);
-    --accent: var(--color-brand-100);
-    --accent-foreground: var(--color-brand-900);
+    --accent: var(--color-accent-500);
+    --accent-foreground: white;
     --destructive: var(--color-error-500);
     --destructive-foreground: white;
     --border: var(--color-neutral-200);

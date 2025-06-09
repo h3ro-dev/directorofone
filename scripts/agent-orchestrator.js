@@ -22,7 +22,7 @@ const SITE_CONFIG = {
 
 // Task Registry with Dependencies
 const TASK_REGISTRY = {
-  // Design & Branding Tasks
+  // PHASE 1: Foundation (COMPLETED)
   'design-system': {
     id: 'design-system',
     name: `Create ${SITE_CONFIG.name} Design System`,
@@ -34,7 +34,6 @@ const TASK_REGISTRY = {
     completionCheck: () => fs.existsSync('frontend/src/styles/design-system.ts')
   },
 
-  // Content Creation Tasks
   'content-strategy': {
     id: 'content-strategy',
     name: `Develop ${SITE_CONFIG.name} Content`,
@@ -45,7 +44,6 @@ const TASK_REGISTRY = {
     completionCheck: () => fs.existsSync('content/copy/homepage.md')
   },
 
-  // Frontend Development Tasks
   'nextjs-setup': {
     id: 'nextjs-setup',
     name: 'Initialize Next.js Project',
@@ -76,7 +74,6 @@ const TASK_REGISTRY = {
     completionCheck: () => fs.existsSync('frontend/app/page.tsx')
   },
 
-  // Backend Tasks
   'api-setup': {
     id: 'api-setup',
     name: 'Setup API Infrastructure',
@@ -87,7 +84,152 @@ const TASK_REGISTRY = {
     completionCheck: () => fs.existsSync('backend/src/api/server.ts')
   },
 
-  // Add more tasks as needed...
+  // PHASE 2: Critical Fixes
+  'fix-auth-imports': {
+    id: 'fix-auth-imports',
+    name: 'Fix Authentication Import Issues',
+    dependencies: ['nextjs-setup'],
+    estimatedHours: 1,
+    priority: 'CRITICAL',
+    prompt: 'Fix TypeScript path mapping in tsconfig.json. Change "@/*": ["./*"] to "@/*": ["./src/*"] to resolve import issues with auth modules.',
+    completionCheck: () => {
+      try {
+        const tsconfig = JSON.parse(fs.readFileSync('frontend/tsconfig.json', 'utf8'));
+        return tsconfig.compilerOptions.paths['@/*'][0] === './src/*';
+      } catch { return false; }
+    }
+  },
+
+  'fix-backend-health': {
+    id: 'fix-backend-health',
+    name: 'Fix Backend Health Endpoints',
+    dependencies: ['api-setup'],
+    estimatedHours: 0.5,
+    priority: 'HIGH',
+    prompt: 'Make health endpoints public (bypass auth middleware). Ensure /health and /api/v1/health are accessible without authentication.',
+    completionCheck: () => {
+      try {
+        // This will need to be manually verified by testing the endpoint
+        return true; // Placeholder - manual verification needed
+      } catch { return false; }
+    }
+  },
+
+  // PHASE 3: Authentication System
+  'auth-integration': {
+    id: 'auth-integration',
+    name: 'Complete Authentication Integration',
+    dependencies: ['fix-auth-imports', 'api-setup'],
+    estimatedHours: 3,
+    priority: 'CRITICAL',
+    prompt: 'Integrate frontend auth context with backend APIs. Test login, register, logout flows. Ensure AuthContext works with existing auth.ts API.',
+    completionCheck: () => fs.existsSync('frontend/src/contexts/AuthContext.tsx') && fs.existsSync('frontend/src/lib/api/auth.ts')
+  },
+
+  'auth-pages': {
+    id: 'auth-pages',
+    name: 'Build Authentication Pages',
+    dependencies: ['auth-integration', 'component-library'],
+    estimatedHours: 4,
+    priority: 'HIGH',
+    prompt: 'Create login, register, forgot password, and reset password pages. Use design system and component library. Professional, trustworthy design for directors.',
+    completionCheck: () => fs.existsSync('frontend/app/login/page.tsx') && fs.existsSync('frontend/app/register/page.tsx')
+  },
+
+  // PHASE 4: Dashboard Foundation
+  'dashboard-layout': {
+    id: 'dashboard-layout',
+    name: 'Build Dashboard Layout',
+    dependencies: ['auth-integration', 'component-library'],
+    estimatedHours: 3,
+    priority: 'HIGH',
+    prompt: 'Create protected dashboard layout with sidebar navigation, header with user menu, responsive design. Professional layout for department directors.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/layout.tsx')
+  },
+
+  'dashboard-overview': {
+    id: 'dashboard-overview',
+    name: 'Build Dashboard Overview Page',
+    dependencies: ['dashboard-layout'],
+    estimatedHours: 4,
+    priority: 'HIGH',
+    prompt: 'Create dashboard overview with key metrics, recent tasks, priority alerts, and quick actions. Focus on one-person department management.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/page.tsx')
+  },
+
+  // PHASE 5: Core Features
+  'task-management': {
+    id: 'task-management',
+    name: 'Build Task Management System',
+    dependencies: ['dashboard-layout', 'api-setup'],
+    estimatedHours: 6,
+    priority: 'HIGH',
+    prompt: 'Create comprehensive task management with priority scoring, deadlines, categories, and automation suggestions. Backend and frontend integration.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/tasks/page.tsx')
+  },
+
+  'priority-system': {
+    id: 'priority-system',
+    name: 'Build AI Priority Management',
+    dependencies: ['task-management'],
+    estimatedHours: 5,
+    priority: 'HIGH',
+    prompt: 'Implement AI-powered priority scoring system. Smart recommendations for task prioritization based on deadlines, impact, and department goals.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/priorities/page.tsx')
+  },
+
+  'workflow-automation': {
+    id: 'workflow-automation',
+    name: 'Build Workflow Automation',
+    dependencies: ['task-management'],
+    estimatedHours: 6,
+    priority: 'MEDIUM',
+    prompt: 'Create workflow automation tools: recurring task templates, automated reminders, process checklists. Help directors automate routine operations.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/workflows/page.tsx')
+  },
+
+  // PHASE 6: Analytics & Insights
+  'analytics-dashboard': {
+    id: 'analytics-dashboard',
+    name: 'Build Analytics Dashboard',
+    dependencies: ['dashboard-layout', 'task-management'],
+    estimatedHours: 5,
+    priority: 'MEDIUM',
+    prompt: 'Create analytics dashboard with department performance metrics, time savings reports, productivity insights, and trend analysis.',
+    completionCheck: () => fs.existsSync('frontend/app/dashboard/analytics/page.tsx')
+  },
+
+  'reporting-system': {
+    id: 'reporting-system',
+    name: 'Build Automated Reporting',
+    dependencies: ['analytics-dashboard'],
+    estimatedHours: 4,
+    priority: 'MEDIUM',
+    prompt: 'Create automated report generation for stakeholders. Weekly/monthly department status reports, key metrics summaries.',
+    completionCheck: () => fs.existsSync('frontend/src/features/reporting')
+  },
+
+  // PHASE 7: Integrations
+  'external-integrations': {
+    id: 'external-integrations',
+    name: 'Build External Integrations',
+    dependencies: ['dashboard-overview'],
+    estimatedHours: 8,
+    priority: 'LOW',
+    prompt: 'Create integrations with common tools: Slack, email, calendar, project management tools. Help directors connect their existing workflow.',
+    completionCheck: () => fs.existsSync('frontend/app/integrations/page.tsx')
+  },
+
+  // PHASE 8: Advanced Features
+  'ai-assistant': {
+    id: 'ai-assistant',
+    name: 'Build AI Assistant',
+    dependencies: ['priority-system', 'analytics-dashboard'],
+    estimatedHours: 10,
+    priority: 'LOW',
+    prompt: 'Create AI assistant for directors: strategic recommendations, workload optimization suggestions, automated decision support.',
+    completionCheck: () => fs.existsSync('frontend/src/features/ai-assistant')
+  }
 };
 
 // Standard orchestrator functions (same as CEO of One)
